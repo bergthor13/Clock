@@ -335,10 +335,26 @@ class ViewController: UIViewController {
     
     func set(holiday:Bool) {
         if holiday {
-            lblDate.textColor = UIColor(red: 255.0/255.0, green: 75.0/255.0, blue: 75.0/255.0, alpha: 1.0)
+            lblDate.textColor = loadHolidayColor()
         } else {
             lblDate.textColor = UIColor(red: 150.0/255.0, green: 150.0/255.0, blue: 150.0/255.0, alpha: 1.0)
         }
+    }
+    
+    private func loadHolidayColor() -> UIColor {
+        // Try to load from UserDefaults
+        if let colorData = UserDefaults.standard.data(forKey: "HolidayColor") {
+            do {
+                if let color = try NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: colorData) {
+                    return color
+                }
+            } catch {
+                print("Error loading holiday color: \(error)")
+            }
+        }
+        
+        // Default holiday color (red)
+        return UIColor(red: 255.0/255.0, green: 75.0/255.0, blue: 75.0/255.0, alpha: 1.0)
     }
     
     func updateDayName() {

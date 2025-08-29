@@ -206,7 +206,7 @@ class CustomHolidaysTableViewController: UITableViewController, UISearchResultsU
         
         // Lita texta ef þetta er frídagur
         if holiday.isHoliday {
-            cell.textLabel?.textColor = UIColor(red: 255.0/255.0, green: 75.0/255.0, blue: 75.0/255.0, alpha: 1.0)
+            cell.textLabel?.textColor = loadHolidayColor()
         } else {
             if #available(iOS 13.0, *) {
                 cell.textLabel?.textColor = UIColor.label
@@ -483,6 +483,24 @@ class CustomHolidaysTableViewController: UITableViewController, UISearchResultsU
         let alert = UIAlertController(title: "Villa", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Í lagi", style: .default))
         present(alert, animated: true)
+    }
+    
+    // MARK: - Holiday Color
+    
+    private func loadHolidayColor() -> UIColor {
+        // Try to load from UserDefaults
+        if let colorData = UserDefaults.standard.data(forKey: "HolidayColor") {
+            do {
+                if let color = try NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: colorData) {
+                    return color
+                }
+            } catch {
+                print("Error loading holiday color: \(error)")
+            }
+        }
+        
+        // Default holiday color (red)
+        return UIColor(red: 255.0/255.0, green: 75.0/255.0, blue: 75.0/255.0, alpha: 1.0)
     }
     
     // MARK: - Save to Plist

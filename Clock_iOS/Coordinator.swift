@@ -36,4 +36,10 @@ class MainCoordinator: Coordinator {
     func weekNumberValueDidChange(value:Bool) {
         (mainViewController as! ViewController).updateDayName()
     }
+    
+    func holidayColorDidChange(color: UIColor) {
+        // Update main view controller with new holiday color
+        // This will be used to update the date label color when it's a holiday
+        (mainViewController as! ViewController).updateDayName()
+    }
 }
