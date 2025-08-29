@@ -23,6 +23,12 @@ class ProgressBarCollectionViewController: UICollectionViewController, UICollect
     var heightConstraint:NSLayoutConstraint
     var dateFormatter = DateFormatter()
     var bars = [BTHProgressBar]()
+    
+    // Cache fyrir útreikningar sem breytast sjaldan
+    private var cachedDaysInYear: Int?
+    private var cachedYear: Int?
+    private var cachedMonth: Int?
+    private var cachedDaysInMonth: Int?
 
     init(collectionViewLayout layout: UICollectionViewLayout, heightConstraint: NSLayoutConstraint) {
         self.heightConstraint = heightConstraint
@@ -44,9 +50,8 @@ class ProgressBarCollectionViewController: UICollectionViewController, UICollect
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        for bar in bars {
-            bar.drawSeparators()
-        }
+        // drawSeparators er nú kallað sjálfkrafa í layoutSubviews hverrar BTHProgressBar
+        // þegar það þarf - óþarft að kalla handvirkt hér
     }
     
     func initialize() {
@@ -128,21 +133,44 @@ class ProgressBarCollectionViewController: UICollectionViewController, UICollect
     }
     
     func getNumberOfDaysIn(year:Int) -> Int {
+        // Cache útreikningar fyrir ár - sparar CPU tíma
+        if cachedYear == year, let cached = cachedDaysInYear {
+            return cached
+        }
+        
         let dateComponents = DateComponents(year: year)
         let calendar = Calendar.current
         let date = calendar.date(from: dateComponents)!
         
         let range = calendar.range(of: .day, in: .year, for: date)!
-        return range.count
+        let daysInYear = range.count
+        
+        // Geyma í cache
+        cachedYear = year
+        cachedDaysInYear = daysInYear
+        
+        return daysInYear
     }
     
     func getNumberOfDaysIn(year:Int, month:Int) -> Int {
+        // Cache útreikningar fyrir mánuð - sparar CPU tíma
+        if cachedYear == year && cachedMonth == month, let cached = cachedDaysInMonth {
+            return cached
+        }
+        
         let dateComponents = DateComponents(year: year, month: month)
         let calendar = Calendar.current
         let date = calendar.date(from: dateComponents)!
         
         let range = calendar.range(of: .day, in: .month, for: date)!
-        return range.count
+        let daysInMonth = range.count
+        
+        // Geyma í cache
+        cachedYear = year
+        cachedMonth = month
+        cachedDaysInMonth = daysInMonth
+        
+        return daysInMonth
     }
     
     func updateProgressBars(date:Date) {
@@ -190,10 +218,7 @@ class ProgressBarCollectionViewController: UICollectionViewController, UICollect
         // Uppfæra progressItems með nýjum dagafjölda
         monthBar.progressItems = getSeparation(start: 1, end: daysInMonth)
         
-        // Þvinga að teikna merkingarnar aftur
-        DispatchQueue.main.async {
-            monthBar.drawSeparators()
-        }
+        // drawSeparators verður kallað sjálfkrafa þegar progressItems breytast
     }
     
     func getProgressBar(id: Int) -> BTHProgressBar {
@@ -246,10 +271,7 @@ class ProgressBarCollectionViewController: UICollectionViewController, UICollect
         heightConstraint.constant = collectionView.contentSize.height
         bars[indexPath.row] = cell.progressView
         
-        // Tryggja að merkingarnar séu teiknaðar strax þegar cella er búin til
-        DispatchQueue.main.async {
-            cell.progressView.drawSeparators()
-        }
+        // Merkingarnar verða teiknaðar sjálfkrafa í layoutSubviews
         
         return cell
     }

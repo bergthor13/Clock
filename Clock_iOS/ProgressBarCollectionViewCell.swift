@@ -14,6 +14,7 @@ class ProgressBarCollectionViewCell: UICollectionViewCell {
     var id = -1
     override func layoutSubviews() {
         super.layoutSubviews()
-        progressView.drawSeparators()
+        // drawSeparators er nú kallað sjálfkrafa í progressView.layoutSubviews()
+        // óþarft að kalla handvirkt hér
     }
 }

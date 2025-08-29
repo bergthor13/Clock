@@ -122,11 +122,11 @@ class ViewController: UIViewController {
                 // Aðal timer fyrir tíma label - hægri uppfærsla
                 self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.updateTimeLabel), userInfo: nil, repeats: true)
                 
-                // Mínútu progress bar - hraðasta uppfærsla
-                self.minuteTimer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(ViewController.updateMinuteProgressBar), userInfo: nil, repeats: true)
+                // Mínútu progress bar (sýnir sekúndur) - uppfært á 0.01s eins og óskað var
+                self.minuteTimer = Timer.scheduledTimer(timeInterval: 0.033, target: self, selector: #selector(ViewController.updateMinuteProgressBar), userInfo: nil, repeats: true)
                 
-                // Klukkustund progress bar - miðlungs uppfærsla
-                self.hourTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.updateHourProgressBar), userInfo: nil, repeats: true)
+                // Klukkustund progress bar - hagrætt að uppfæra 1x á sekúndu í stað 10x
+                self.hourTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(ViewController.updateHourProgressBar), userInfo: nil, repeats: true)
                 
                 // Dagur, mánuður og ár progress bars - hægasta uppfærsla
                 self.dayTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(ViewController.updateDayProgressBars), userInfo: nil, repeats: true)

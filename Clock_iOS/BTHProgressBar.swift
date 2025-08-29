@@ -33,15 +33,19 @@ class BTHProgressBar: UIView {
     var progressItems = [ProgressItem]() {
         didSet {
             setNeedsLayout()
+            separatorsNeedRedraw = true
         }
     }
     
     var progress:Double = 0.0 {
         didSet {
             updateProgress()
-            //drawSeparators()
         }
     }
+    
+    // Flag til að forðast óþarfa uppfærslur á merkingum
+    private var separatorsNeedRedraw = true
+    private var lastFrameSize: CGSize = .zero
     
     var progressWidth:CGFloat {
         return frame.width * CGFloat(progress)
@@ -108,14 +112,22 @@ class BTHProgressBar: UIView {
     }
     
     func drawSeparators() {
+        // Bara teikna aftur ef það þarf
+        if !separatorsNeedRedraw && lastFrameSize == frame.size {
+            return
+        }
+        
         if progressItems.count == 0 {
             return
         }
+        
+        // Fjarlægja gömul views bara ef við þurfum að uppfæra
         for view in subviews {
             if view.tag == 300 || view.tag == 200 {
                 view.removeFromSuperview()
             }
         }
+        
         for (index, item) in progressItems.enumerated() {
             let progressInView = frame.width * CGFloat(item.progress)
             var lastProgress:Double
@@ -145,6 +157,19 @@ class BTHProgressBar: UIView {
                 addSubview(separatorView)
             }
             addSubview(progressLabel)
+        }
+        
+        // Reset flags eftir að teikna merkingarnar
+        separatorsNeedRedraw = false
+        lastFrameSize = frame.size
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        // Athuga hvort frame hefur breyst
+        if lastFrameSize != frame.size {
+            separatorsNeedRedraw = true
+            drawSeparators()
         }
     }
     
