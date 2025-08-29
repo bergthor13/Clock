@@ -57,7 +57,7 @@ class FaerdViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(FaerdViewController.didTimeOut(_:)), userInfo: nil, repeats: false)
+        self.timer = Timer.scheduledTimer(timeInterval: 60*5, target: self, selector: #selector(FaerdViewController.didTimeOut(_:)), userInfo: nil, repeats: false)
 
         self.initializeViews()
         self.addSubviews()

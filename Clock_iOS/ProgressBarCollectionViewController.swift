@@ -42,6 +42,13 @@ class ProgressBarCollectionViewController: UICollectionViewController, UICollect
         super.viewDidLoad()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        for bar in bars {
+            bar.drawSeparators()
+        }
+    }
+    
     func initialize() {
         dateFormatter.dateStyle = .full
         dateFormatter.timeStyle = .none

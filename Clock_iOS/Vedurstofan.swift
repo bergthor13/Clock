@@ -23,7 +23,9 @@ class Vedurstofan {
                 return
             }
             do {
-                let json = try JSONSerialization.jsonObject(with: data) as! Dictionary<String, Array<AnyObject>>
+                guard let json = try JSONSerialization.jsonObject(with: data) as? Dictionary<String, Array<AnyObject>> else {
+                    return handler(nil)
+                }
                 let observation = Vedurstofan.WeatherObservation(response: json)
                 return handler(observation)
             } catch {

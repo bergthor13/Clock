@@ -2,6 +2,25 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSExceptionDomains</key>
+        <dict>
+            <key>xmlweather.vedur.is</key>
+            <dict>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                <!-- Allow insecure loads for testing or if certificate issues cannot be resolved immediately -->
+                <key>NSExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+                <!-- Optionally relax forward secrecy and TLS minimum version if needed -->
+                <key>NSExceptionRequiresForwardSecrecy</key>
+                <false/>
+                <key>NSExceptionMinimumTLSVersion</key>
+                <string>TLSv1.2</string>
+            </dict>
+        </dict>
+    </dict>
 	<key>UIStatusBarHidden</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>

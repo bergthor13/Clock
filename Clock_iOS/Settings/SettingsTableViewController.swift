@@ -13,6 +13,7 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
     @IBOutlet weak var schShowSeconds: UISwitch!
     @IBOutlet weak var schShowMillis: UISwitch!
     @IBOutlet weak var schSundayHoliday: UISwitch!
+    @IBOutlet weak var schShowWeekNumber: UISwitch!
     weak var coordinator: MainCoordinator!
 
     override func viewDidLoad() {
@@ -21,9 +22,11 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
         let showSeconds = UserDefaults.standard.bool(forKey: "ShowSeconds")
         let showMillis = UserDefaults.standard.bool(forKey: "ShowMillis")
         let sundaysAsHolidays = UserDefaults.standard.bool(forKey: "SundayIsHoliday")
+        let showWeekNumber = UserDefaults.standard.bool(forKey: "ShowWeekNumber")
         schShowSeconds.setOn(showSeconds, animated: false)
         schShowMillis.setOn(showMillis, animated: false)
         schSundayHoliday.setOn(sundaysAsHolidays, animated: false)
+        schShowWeekNumber.setOn(showWeekNumber, animated: false)
     }
 
     @IBAction func schShowSeconds(_ sender: UISwitch) {
@@ -36,6 +39,10 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
     }
     @IBAction func sundayIsHolidayToggle(_ sender: UISwitch) {
         UserDefaults.standard.set(sender.isOn, forKey: "SundayIsHoliday")
+    }
+    
+    @IBAction func showWeekNumberToggle(_ sender: UISwitch) {
+        UserDefaults.standard.set(sender.isOn, forKey: "ShowWeekNumber")
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

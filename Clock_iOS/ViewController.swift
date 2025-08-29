@@ -123,9 +123,14 @@ class ViewController: UIViewController {
         
         self.timer = Timer.scheduledTimer(timeInterval:backgroundUpdateTime, target: self, selector: #selector(ViewController.updateBackgroundImage), userInfo: nil, repeats: true)
         
+        backgroundImages.append(UIImage(named: "gos")!)
+        backgroundImages.append(UIImage(named: "irland")!)
+        backgroundImages.append(UIImage(named: "herad")!)
+        backgroundImages.append(UIImage(named: "eyvindara")!)
         backgroundImages.append(UIImage(named: "plants")!)
         backgroundImages.append(UIImage(named: "leaves")!)
         backgroundImages.append(UIImage(named: "straws")!)
+
     }
     
     func setShowMillis(showMillis:Bool) {
@@ -197,8 +202,6 @@ class ViewController: UIViewController {
     }
     
     @objc func fetchNewTemperature() {
-        let tempErrorMsg = "TMP ERR"
-        
         let formatter = NumberFormatter()
         formatter.locale = Locale.current
         formatter.minimumFractionDigits = 1
@@ -208,40 +211,20 @@ class ViewController: UIViewController {
         timeFormatter.locale = Locale.current
         timeFormatter.timeStyle = .short
         
-        Vedurstofan.getTemperatureFor(station: 1473) {observation in
-            if observation == nil {
-                sleep(10)
-                Vedurstofan.getTemperatureFor(station: 31475) {observation in
-                    if observation?.temperature != nil {
-                        let formattedNumber = formatter.string(from: NSNumber(value: (observation?.temperature)!))
-                        DispatchQueue.main.async() {
-                            self.lblTemp.text = formattedNumber! + "°C"
-                            let checkTime = timeFormatter.string(from: Date())
-                            let updateTime = timeFormatter.string(from: (observation?.time)!)
-                            
-                            self.lblStation.text = "Kauptún (\(updateTime)) (\(checkTime))"
-                        }
-                    } else {
-                        DispatchQueue.main.async() {
-                            self.lblTemp.text = tempErrorMsg
-                            let checkTime = timeFormatter.string(from: Date())
-                            
-                            self.lblStation.text = "Engin stöð virk (\(checkTime))"
-                        }
-                    }
+        let weatherParser = WeatherXMLFetcher()
+        weatherParser.fetchXML { weatherData in
+            if let data = weatherData {
+                DispatchQueue.main.async() {
+                    self.lblTemp.text = data.temperature + "°C"
+                    let checkTime = timeFormatter.string(from: Date())
+                    let updateTime = timeFormatter.string(from: (data.time as Date))
+                    
+                    self.lblStation.text = "Straumsvík M:(\(updateTime)) A:(\(checkTime))"
                 }
             } else {
-                let formattedNumber = formatter.string(from: NSNumber(value: (observation?.temperature)!))
-                DispatchQueue.main.async() {
-                    self.lblTemp.text = formattedNumber! + "°C"
-                    let checkTime = timeFormatter.string(from: Date())
-                    let updateTime = timeFormatter.string(from: (observation?.time)!)
-                    
-                    self.lblStation.text = "Straumsvík (\(updateTime)) (\(checkTime))"
-                }
+                let checkTime = timeFormatter.string(from: Date())
+                self.lblStation.text = "Engin stöð virk (\(checkTime))"
             }
-            
-
         }
     }
     
@@ -294,25 +277,69 @@ class ViewController: UIViewController {
     }
     
     func getDayName(date: Date) -> NSDictionary? {
-        let dictionary = NSArray(contentsOfFile: Bundle.main.path(forResource: "Almanak", ofType: "plist")!);
+        let dictionary = NSArray(contentsOfFile: Bundle.main.path(forResource: "Almanak_separated_complete", ofType: "plist")!);
+        
+        // Finna allar færslur fyrir sama dag
+        var allEntries: [NSDictionary] = []
+        var combinedName = ""
+        var isHoliday = false
+        
         for day in dictionary! {
             guard let day = day as? NSDictionary else {
-                return nil
+                continue
             }
             
             guard let dayDate = day["date"] as? Date else {
-                return nil
+                continue
             }
             
-            if dayDate > Date() {
-                return nil
+            if dayDate > date {
+                continue
             }
             
-            if Calendar.current.isDate(dayDate, inSameDayAs: Date()) {
-                return day
+            if Calendar.current.isDate(dayDate, inSameDayAs: date) {
+                allEntries.append(day)
+                
+                // Sameina nöfn
+                if let dayName = day["name"] as? String {
+                    if !combinedName.isEmpty {
+                        combinedName += "\n"
+                    }
+                    combinedName += dayName
+                }
+                
+                // Ef einhver færsla er frídagur, þá er dagurinn frídagur
+                if let holiday = day["holiday"] as? Bool, holiday {
+                    isHoliday = true
+                }
             }
         }
-        return nil
+        
+        // Bæta við vikunúmeri fyrir mánudaga
+        let calendar = Calendar.current
+        let weekday = calendar.component(.weekday, from: date)
+        
+        // Mánudagur er weekday == 2 (sunnudagur er 1)
+        if weekday == 2 {
+            let weekOfYear = calendar.component(.weekOfYear, from: date)
+            if !combinedName.isEmpty {
+                combinedName += "\n"
+            }
+            combinedName += "\(weekOfYear). vika"
+        }
+                
+        // Ef engar færslur fundust en við höfum vikunúmer
+        if allEntries.isEmpty && combinedName.isEmpty {
+            return nil
+        }
+        
+        // Búa til sameinaða færslu
+        let combinedEntry = NSMutableDictionary()
+        combinedEntry["name"] = combinedName
+        combinedEntry["holiday"] = isHoliday
+        combinedEntry["date"] = date
+        
+        return combinedEntry
     }
     
     // MARK: - Navigation
