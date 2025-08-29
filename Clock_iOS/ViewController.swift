@@ -276,6 +276,11 @@ class ViewController: UIViewController {
         }
     }
     
+    func updateDayName() {
+        // Uppfæra dagsetninguna strax
+        newDay()
+    }
+    
     func getDayName(date: Date) -> NSDictionary? {
         let dictionary = NSArray(contentsOfFile: Bundle.main.path(forResource: "Almanak_separated_complete", ofType: "plist")!);
         
@@ -321,11 +326,15 @@ class ViewController: UIViewController {
         
         // Mánudagur er weekday == 2 (sunnudagur er 1)
         if weekday == 2 {
-            let weekOfYear = calendar.component(.weekOfYear, from: date)
-            if !combinedName.isEmpty {
-                combinedName += "\n"
+            let showWeekNumber = UserDefaults.standard.bool(forKey: "ShowWeekNumber")
+            if showWeekNumber {
+                let weekOfYear = calendar.component(.weekOfYear, from: date)
+                if !combinedName.isEmpty {
+                    combinedName += "\n"
+                }
+                combinedName += "\(weekOfYear). vika"
+                print("DEBUG: Bætti við vikunúmeri: \(weekOfYear). vika fyrir mánudag")
             }
-            combinedName += "\(weekOfYear). vika"
         }
                 
         // Ef engar færslur fundust en við höfum vikunúmer

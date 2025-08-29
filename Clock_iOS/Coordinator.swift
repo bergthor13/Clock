@@ -32,4 +32,8 @@ class MainCoordinator: Coordinator {
     func millisValueDidChange(value:Bool) {
         (mainViewController as! ViewController).setShowMillis(showMillis: value)
     }
+    
+    func weekNumberValueDidChange(value:Bool) {
+        (mainViewController as! ViewController).updateDayName()
+    }
 }

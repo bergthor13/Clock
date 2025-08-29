@@ -43,6 +43,11 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
     
     @IBAction func showWeekNumberToggle(_ sender: UISwitch) {
         UserDefaults.standard.set(sender.isOn, forKey: "ShowWeekNumber")
+        
+        // Uppfæra UI-ið strax
+        if let coordinator = coordinator {
+            coordinator.weekNumberValueDidChange(value: sender.isOn)
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

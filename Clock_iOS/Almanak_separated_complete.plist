@@ -24,14 +24,6 @@
 		<key>holiday</key>
 		<true/>
 		<key>name</key>
-		<string>1. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-01-01T00:00:00Z</date>
-		<key>holiday</key>
-		<true/>
-		<key>name</key>
 		<string>Nýársdagur</string>
 	</dict>
 	<dict>
@@ -52,35 +44,11 @@
 	</dict>
 	<dict>
 		<key>date</key>
-		<date>2024-01-08T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>2. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
 		<date>2024-01-13T00:00:00Z</date>
 		<key>holiday</key>
 		<false/>
 		<key>name</key>
 		<string>Geisladagur</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-01-15T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>3. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-01-22T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>4. vika</string>
 	</dict>
 	<dict>
 		<key>date</key>
@@ -116,14 +84,6 @@
 	</dict>
 	<dict>
 		<key>date</key>
-		<date>2024-01-29T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>5. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
 		<date>2024-02-02T00:00:00Z</date>
 		<key>holiday</key>
 		<false/>
@@ -153,22 +113,6 @@
 		<false/>
 		<key>name</key>
 		<string>Alþjóðlegi krabbameinsdagurinn</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-02-05T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>6. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-02-12T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>7. vika</string>
 	</dict>
 	<dict>
 		<key>date</key>
@@ -204,14 +148,6 @@
 	</dict>
 	<dict>
 		<key>date</key>
-		<date>2024-02-19T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>8. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
 		<date>2024-02-21T00:00:00Z</date>
 		<key>holiday</key>
 		<false/>
@@ -244,14 +180,6 @@
 	</dict>
 	<dict>
 		<key>date</key>
-		<date>2024-02-26T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>9. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
 		<date>2024-03-01T00:00:00Z</date>
 		<key>holiday</key>
 		<false/>
@@ -265,14 +193,6 @@
 		<false/>
 		<key>name</key>
 		<string>Æskulýðsdagurinn</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-03-04T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>10. vika</string>
 	</dict>
 	<dict>
 		<key>date</key>
@@ -292,14 +212,6 @@
 	</dict>
 	<dict>
 		<key>date</key>
-		<date>2024-03-11T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>11. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
 		<date>2024-03-16T00:00:00Z</date>
 		<key>holiday</key>
 		<false/>
@@ -313,14 +225,6 @@
 		<false/>
 		<key>name</key>
 		<string>Geirþrúðardagur</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-03-18T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>12. vika</string>
 	</dict>
 	<dict>
 		<key>date</key>
@@ -368,14 +272,6 @@
 		<key>holiday</key>
 		<false/>
 		<key>name</key>
-		<string>13. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-03-25T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
 		<string>Góuþræll</string>
 	</dict>
 	<dict>
@@ -416,14 +312,6 @@
 		<key>holiday</key>
 		<true/>
 		<key>name</key>
-		<string>14. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-04-01T00:00:00Z</date>
-		<key>holiday</key>
-		<true/>
-		<key>name</key>
 		<string>Annar í páskum</string>
 	</dict>
 	<dict>
@@ -457,30 +345,6 @@
 		<false/>
 		<key>name</key>
 		<string>Alþjóða heilbrigðisdagurinn</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-04-08T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>15. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-04-15T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>16. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-04-22T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>17. vika</string>
 	</dict>
 	<dict>
 		<key>date</key>
@@ -532,14 +396,6 @@
 	</dict>
 	<dict>
 		<key>date</key>
-		<date>2024-04-29T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>18. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
 		<date>2024-04-30T00:00:00Z</date>
 		<key>holiday</key>
 		<false/>
@@ -577,14 +433,6 @@
 		<false/>
 		<key>name</key>
 		<string>Alþjóðlegi Star Wars dagurinn</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-05-06T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>19. vika</string>
 	</dict>
 	<dict>
 		<key>date</key>
@@ -636,14 +484,6 @@
 	</dict>
 	<dict>
 		<key>date</key>
-		<date>2024-05-13T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>20. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
 		<date>2024-05-14T00:00:00Z</date>
 		<key>holiday</key>
 		<false/>
@@ -672,14 +512,6 @@
 		<key>holiday</key>
 		<true/>
 		<key>name</key>
-		<string>21. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-05-20T00:00:00Z</date>
-		<key>holiday</key>
-		<true/>
-		<key>name</key>
 		<string>Annar í hvítasunnu</string>
 	</dict>
 	<dict>
@@ -697,14 +529,6 @@
 		<false/>
 		<key>name</key>
 		<string>Skerpla hefst</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-05-27T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>22. vika</string>
 	</dict>
 	<dict>
 		<key>date</key>
@@ -732,14 +556,6 @@
 	</dict>
 	<dict>
 		<key>date</key>
-		<date>2024-06-03T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>23. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
 		<date>2024-06-05T00:00:00Z</date>
 		<key>holiday</key>
 		<false/>
@@ -764,14 +580,6 @@
 	</dict>
 	<dict>
 		<key>date</key>
-		<date>2024-06-10T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>24. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
 		<date>2024-06-12T00:00:00Z</date>
 		<key>holiday</key>
 		<false/>
@@ -793,14 +601,6 @@
 		<false/>
 		<key>name</key>
 		<string>Alþjóðadagur gegn illri meðferð eldra fólks</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-06-17T00:00:00Z</date>
-		<key>holiday</key>
-		<true/>
-		<key>name</key>
-		<string>25. vika</string>
 	</dict>
 	<dict>
 		<key>date</key>
@@ -864,14 +664,6 @@
 		<key>holiday</key>
 		<false/>
 		<key>name</key>
-		<string>26. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-06-24T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
 		<string>Jónsmessa</string>
 	</dict>
 	<dict>
@@ -908,35 +700,11 @@
 	</dict>
 	<dict>
 		<key>date</key>
-		<date>2024-07-01T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>27. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-07-08T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>28. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
 		<date>2024-07-13T00:00:00Z</date>
 		<key>holiday</key>
 		<false/>
 		<key>name</key>
 		<string>Hundadagar byrja</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-07-15T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>29. vika</string>
 	</dict>
 	<dict>
 		<key>date</key>
@@ -964,14 +732,6 @@
 	</dict>
 	<dict>
 		<key>date</key>
-		<date>2024-07-22T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>30. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
 		<date>2024-07-24T00:00:00Z</date>
 		<key>holiday</key>
 		<false/>
@@ -993,14 +753,6 @@
 		<false/>
 		<key>name</key>
 		<string>Miðsumar</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-07-29T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>31. vika</string>
 	</dict>
 	<dict>
 		<key>date</key>
@@ -1032,14 +784,6 @@
 		<key>holiday</key>
 		<true/>
 		<key>name</key>
-		<string>32. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-08-05T00:00:00Z</date>
-		<key>holiday</key>
-		<true/>
-		<key>name</key>
 		<string>Frídagur verslunarmanna</string>
 	</dict>
 	<dict>
@@ -1056,14 +800,6 @@
 		<key>holiday</key>
 		<false/>
 		<key>name</key>
-		<string>33. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-08-12T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
 		<string>Alþjóða æskudagurinn</string>
 	</dict>
 	<dict>
@@ -1073,14 +809,6 @@
 		<false/>
 		<key>name</key>
 		<string>Hólahátíð</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-08-19T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>34. vika</string>
 	</dict>
 	<dict>
 		<key>date</key>
@@ -1108,14 +836,6 @@
 	</dict>
 	<dict>
 		<key>date</key>
-		<date>2024-08-26T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>35. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
 		<date>2024-08-27T00:00:00Z</date>
 		<key>holiday</key>
 		<false/>
@@ -1132,14 +852,6 @@
 	</dict>
 	<dict>
 		<key>date</key>
-		<date>2024-09-02T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>36. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
 		<date>2024-09-05T00:00:00Z</date>
 		<key>holiday</key>
 		<false/>
@@ -1153,14 +865,6 @@
 		<false/>
 		<key>name</key>
 		<string>Alþjóðadagur læsis</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-09-09T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>37. vika</string>
 	</dict>
 	<dict>
 		<key>date</key>
@@ -1192,14 +896,6 @@
 		<key>holiday</key>
 		<false/>
 		<key>name</key>
-		<string>38. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-09-16T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
 		<string>Dagur íslenskrar náttúru</string>
 	</dict>
 	<dict>
@@ -1220,14 +916,6 @@
 	</dict>
 	<dict>
 		<key>date</key>
-		<date>2024-09-23T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>39. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
 		<date>2024-09-26T00:00:00Z</date>
 		<key>holiday</key>
 		<false/>
@@ -1241,14 +929,6 @@
 		<false/>
 		<key>name</key>
 		<string>Haustvertíð hefst</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-09-30T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>40. vika</string>
 	</dict>
 	<dict>
 		<key>date</key>
@@ -1268,14 +948,6 @@
 	</dict>
 	<dict>
 		<key>date</key>
-		<date>2024-10-07T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>41. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
 		<date>2024-10-10T00:00:00Z</date>
 		<key>holiday</key>
 		<false/>
@@ -1292,27 +964,11 @@
 	</dict>
 	<dict>
 		<key>date</key>
-		<date>2024-10-14T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>42. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
 		<date>2024-10-15T00:00:00Z</date>
 		<key>holiday</key>
 		<false/>
 		<key>name</key>
 		<string>Alþjóðadagur dreifbýliskvenna</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-10-21T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>43. vika</string>
 	</dict>
 	<dict>
 		<key>date</key>
@@ -1348,14 +1004,6 @@
 	</dict>
 	<dict>
 		<key>date</key>
-		<date>2024-10-28T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>44. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
 		<date>2024-10-31T00:00:00Z</date>
 		<key>holiday</key>
 		<false/>
@@ -1380,27 +1028,11 @@
 	</dict>
 	<dict>
 		<key>date</key>
-		<date>2024-11-04T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>45. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
 		<date>2024-11-10T00:00:00Z</date>
 		<key>holiday</key>
 		<false/>
 		<key>name</key>
 		<string>Feðradagurinn</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-11-11T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>46. vika</string>
 	</dict>
 	<dict>
 		<key>date</key>
@@ -1420,14 +1052,6 @@
 	</dict>
 	<dict>
 		<key>date</key>
-		<date>2024-11-18T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>47. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
 		<date>2024-11-19T00:00:00Z</date>
 		<key>holiday</key>
 		<false/>
@@ -1441,14 +1065,6 @@
 		<false/>
 		<key>name</key>
 		<string>Alþjóða barnadagurinn</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-11-25T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>48. vika</string>
 	</dict>
 	<dict>
 		<key>date</key>
@@ -1480,14 +1096,6 @@
 		<key>holiday</key>
 		<false/>
 		<key>name</key>
-		<string>49. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-12-02T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
 		<string>Alþjóðadagur afnáms þrælahalds</string>
 	</dict>
 	<dict>
@@ -1505,14 +1113,6 @@
 		<false/>
 		<key>name</key>
 		<string>2. sunnudagur í aðventu</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-12-09T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>50. vika</string>
 	</dict>
 	<dict>
 		<key>date</key>
@@ -1577,14 +1177,6 @@
 		<false/>
 		<key>name</key>
 		<string>Pottasleikir kemur til byggða í nótt</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-12-16T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>51. vika</string>
 	</dict>
 	<dict>
 		<key>date</key>
@@ -1664,14 +1256,6 @@
 		<key>holiday</key>
 		<false/>
 		<key>name</key>
-		<string>52. vika</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-12-23T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
 		<string>Þorláksmessa</string>
 	</dict>
 	<dict>
@@ -1721,14 +1305,6 @@
 		<false/>
 		<key>name</key>
 		<string>Barnadagurinn</string>
-	</dict>
-	<dict>
-		<key>date</key>
-		<date>2024-12-30T00:00:00Z</date>
-		<key>holiday</key>
-		<false/>
-		<key>name</key>
-		<string>1. vika 2025</string>
 	</dict>
 	<dict>
 		<key>date</key>

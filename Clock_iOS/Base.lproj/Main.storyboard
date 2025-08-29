@@ -430,6 +430,34 @@ asdf</string>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="weekNumberCell">
+                                        <rect key="frame" x="0.0" y="722" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="weekNumberCell" id="weekNumberContentView">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sýna vikunúmer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="weekNumberLabel">
+                                                    <rect key="frame" x="20" y="11.5" width="140" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="weekNumberSwitch">
+                                                    <rect key="frame" x="306" y="6.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="showWeekNumberToggle:" destination="Y0b-Ru-tUz" eventType="valueChanged" id="weekNumberAction"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="weekNumberSwitch" firstAttribute="centerY" secondItem="weekNumberContentView" secondAttribute="centerY" id="weekNumberSwitchCenterY"/>
+                                                <constraint firstItem="weekNumberLabel" firstAttribute="centerY" secondItem="weekNumberContentView" secondAttribute="centerY" id="weekNumberLabelCenterY"/>
+                                                <constraint firstItem="weekNumberLabel" firstAttribute="leading" secondItem="weekNumberContentView" secondAttribute="leading" constant="20" symbolic="YES" id="weekNumberLabelLeading"/>
+                                                <constraint firstAttribute="trailing" secondItem="weekNumberSwitch" secondAttribute="trailing" constant="20" symbolic="YES" id="weekNumberSwitchTrailing"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Progress Bars" footerTitle="Select which progress bars you want displayed." id="cTG-pK-3gL">
@@ -549,6 +577,7 @@ asdf</string>
                         <outlet property="schShowMillis" destination="Eqo-0d-GgM" id="5dJ-Hk-j9R"/>
                         <outlet property="schShowSeconds" destination="YL2-Qs-Hcn" id="j41-EQ-5yf"/>
                         <outlet property="schSundayHoliday" destination="Sq5-6a-KEc" id="8yv-z2-3Vf"/>
+                        <outlet property="schShowWeekNumber" destination="weekNumberSwitch" id="weekNumberOutlet"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bIP-1D-sPu" userLabel="First Responder" sceneMemberID="firstResponder"/>
