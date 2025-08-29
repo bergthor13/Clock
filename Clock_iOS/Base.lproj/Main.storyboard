@@ -50,6 +50,45 @@ asdf</string>
                                     </segue>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yx8-pN-pPz">
+                                <rect key="frame" x="8" y="627" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="P6v-Dw-gKs"/>
+                                    <constraint firstAttribute="height" constant="30" id="fDo-VH-9Ve"/>
+                                </constraints>
+                                <state key="normal" title="◀">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapPreviousDay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3f9-7F-2oV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t4W-Fc-sAM">
+                                <rect key="frame" x="48" y="627" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="7D8-rw-eCF"/>
+                                    <constraint firstAttribute="height" constant="30" id="eEJ-JE-sJd"/>
+                                </constraints>
+                                <state key="normal" title="▶">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapNextDay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QPb-yO-XeF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XyP-Cz-mU5">
+                                <rect key="frame" x="88" y="627" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="UW6-jh-6W6"/>
+                                    <constraint firstAttribute="height" constant="30" id="rL1-Gn-WXs"/>
+                                </constraints>
+                                <state key="normal" title="●">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapResetToToday:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kHf-Y4-4Qv"/>
+                                </connections>
+                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BTI-pf-pOz">
                                 <rect key="frame" x="8" y="8" width="1008" height="170"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -160,6 +199,12 @@ asdf</string>
                             <constraint firstItem="SEb-zX-zXD" firstAttribute="trailing" secondItem="1Iq-c7-tMQ" secondAttribute="trailing" id="mwY-Tc-TD2"/>
                             <constraint firstItem="Meo-2P-UmN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="nYf-lh-teJ"/>
                             <constraint firstItem="JOc-s7-Yt9" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="p4f-bs-Y5t"/>
+                            <constraint firstItem="Yx8-pN-pPz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="Px4-KL-mOz"/>
+                            <constraint firstItem="Yx8-pN-pPz" firstAttribute="bottom" secondItem="Meo-2P-UmN" secondAttribute="top" constant="-10" id="Y3c-Hm-8tG"/>
+                            <constraint firstItem="t4W-Fc-sAM" firstAttribute="leading" secondItem="Yx8-pN-pPz" secondAttribute="trailing" constant="10" id="c9m-vh-3Px"/>
+                            <constraint firstItem="t4W-Fc-sAM" firstAttribute="bottom" secondItem="Meo-2P-UmN" secondAttribute="top" constant="-10" id="dK1-7g-iYx"/>
+                            <constraint firstItem="XyP-Cz-mU5" firstAttribute="leading" secondItem="t4W-Fc-sAM" secondAttribute="trailing" constant="10" id="hL9-Xx-7Wq"/>
+                            <constraint firstItem="XyP-Cz-mU5" firstAttribute="bottom" secondItem="Meo-2P-UmN" secondAttribute="top" constant="-10" id="oP2-Mj-6hX"/>
                             <constraint firstItem="SEb-zX-zXD" firstAttribute="leading" secondItem="1Iq-c7-tMQ" secondAttribute="leading" id="pg7-zd-Qow"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Zys-uT-EPj" secondAttribute="bottom" id="qYW-2Q-AZf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BTI-pf-pOz" secondAttribute="trailing" constant="8" id="rV4-pC-cqy"/>

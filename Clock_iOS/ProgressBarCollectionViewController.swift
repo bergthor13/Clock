@@ -146,7 +146,29 @@ class ProgressBarCollectionViewController: UICollectionViewController, UICollect
     }
     
     func updateProgressBars(date:Date) {
+        updateMinuteProgressBar(date: date)
+        updateHourProgressBar(date: date)
+        updateDayProgressBars(date: date)
+    }
+    
+    func updateMinuteProgressBar(date:Date) {
+        let components = Calendar.current.dateComponents([.nanosecond, .second], from: date)
+        let subSecond = Double(components.nanosecond!)/1000000000.0
+        let second = Double(components.second!) + subSecond
         
+        getProgressBar(id: BAR_ID().MINUTE).progress = second/60.0
+    }
+    
+    func updateHourProgressBar(date:Date) {
+        let components = Calendar.current.dateComponents([.nanosecond, .second, .minute], from: date)
+        let subSecond = Double(components.nanosecond!)/1000000000.0
+        let second = Double(components.second!) + subSecond
+        let minute = Double(components.minute!) + second/60.0
+        
+        getProgressBar(id: BAR_ID().HOUR).progress = minute/60.0
+    }
+    
+    func updateDayProgressBars(date:Date) {
         let components = Calendar.current.dateComponents([.nanosecond, .second, .minute, .hour, .day, .month, .year], from: date)
         let daysInYear = Double(getNumberOfDaysIn(year: components.year!))
         let subSecond = Double(components.nanosecond!)/1000000000.0
@@ -156,8 +178,6 @@ class ProgressBarCollectionViewController: UICollectionViewController, UICollect
         let day = Double(components.day!) + hour/24.0
         let dayOfYear = Double(Calendar.current.ordinality(of: .day, in: .year, for: date)!) + hour/24.0
 
-        getProgressBar(id: BAR_ID().MINUTE).progress = second/60.0
-        getProgressBar(id: BAR_ID().HOUR).progress = minute/60.0
         getProgressBar(id: BAR_ID().DAY).progress = hour/24.0
         getProgressBar(id: BAR_ID().MONTH).progress = ((day-1)/Double(getNumberOfDaysIn(year: components.year!, month: components.month!)))
         getProgressBar(id: BAR_ID().YEAR).progress = (dayOfYear - 1) / daysInYear

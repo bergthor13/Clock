@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F20D58B821EA7F7C0014F551 /* Almanak.plist in Resources */ = {isa = PBXBuildFile; fileRef = F20D58B721EA7F7C0014F551 /* Almanak.plist */; };
-		F2375FF22E61EB31002A581C /* Almanak_separated_complete.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2375FF12E61EB31002A581C /* Almanak_separated_complete.plist */; };
+		F2375FF32E61EB41002A581C /* Almanak_separated_by_type.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2375FF42E61EB41002A581C /* Almanak_separated_by_type.plist */; };
 		F2393F1E2D7A5BB50069A9E1 /* WeatherXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2393F1D2D7A5BAA0069A9E1 /* WeatherXMLParser.swift */; };
 		F2393F202D7A617B0069A9E1 /* InsecureSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2393F1F2D7A61740069A9E1 /* InsecureSessionDelegate.swift */; };
 		F244908221F9D1AD00805BCB /* FaerdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F244908121F9D1AD00805BCB /* FaerdViewController.swift */; };
@@ -34,9 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F20D58B721EA7F7C0014F551 /* Almanak.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Almanak.plist; sourceTree = "<group>"; };
 		F22240B220268784001564FB /* Clock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clock.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F2375FF12E61EB31002A581C /* Almanak_separated_complete.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Almanak_separated_complete.plist; sourceTree = "<group>"; };
+		F2375FF42E61EB41002A581C /* Almanak_separated_by_type.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Almanak_separated_by_type.plist; sourceTree = "<group>"; };
 		F2393F1D2D7A5BAA0069A9E1 /* WeatherXMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherXMLParser.swift; sourceTree = "<group>"; };
 		F2393F1F2D7A61740069A9E1 /* InsecureSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsecureSessionDelegate.swift; sourceTree = "<group>"; };
 		F244908121F9D1AD00805BCB /* FaerdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaerdViewController.swift; sourceTree = "<group>"; };
@@ -112,8 +110,7 @@
 				F284154920751F7D005CA5AF /* BTHProgressBar.swift */,
 				F287438B20A270EF00267267 /* ProgressBarCollectionViewController.swift */,
 				F287438D20A282DD00267267 /* ProgressBarCollectionViewCell.swift */,
-				F20D58B721EA7F7C0014F551 /* Almanak.plist */,
-				F2375FF12E61EB31002A581C /* Almanak_separated_complete.plist */,
+				F2375FF42E61EB41002A581C /* Almanak_separated_by_type.plist */,
 				F244908121F9D1AD00805BCB /* FaerdViewController.swift */,
 				F244908D21FE0BE000805BCB /* TempTrendViewController.swift */,
 				F244908321F9E00200805BCB /* FaerdCollectionViewController.swift */,
@@ -228,8 +225,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2375FF22E61EB31002A581C /* Almanak_separated_complete.plist in Resources */,
-				F20D58B821EA7F7C0014F551 /* Almanak.plist in Resources */,
+				F2375FF32E61EB41002A581C /* Almanak_separated_by_type.plist in Resources */,
 				F2841542207447E0005CA5AF /* LaunchScreen.storyboard in Resources */,
 				F284153F207447E0005CA5AF /* Assets.xcassets in Resources */,
 				F284153D207447DE005CA5AF /* Main.storyboard in Resources */,

@@ -26,6 +26,9 @@ class ViewController: UIViewController {
     
     // MARK: - Timers
     var timer:Timer?
+    var minuteTimer:Timer?
+    var hourTimer:Timer?
+    var dayTimer:Timer?
     var tempTimer:Timer?
     var faerdTimer:Timer?
 
@@ -44,6 +47,9 @@ class ViewController: UIViewController {
     var backgroundImages = [UIImage]()
     var backgroundImageId = 0
     var coordinator: MainCoordinator!
+    
+    // MARK: - Debug/Testing
+    var testDate: Date? // Ef ekki nil, notum þessa dagsetningu í staðinn fyrir Date()
     
     fileprivate func blurBackground() {
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
@@ -81,6 +87,24 @@ class ViewController: UIViewController {
         
     }
     
+    // MARK: - Debug IBActions
+    @IBAction func didTapPreviousDay(_ sender: Any) {
+        let currentTestDate = testDate ?? Date()
+        testDate = Calendar.current.date(byAdding: .day, value: -1, to: currentTestDate)
+        updateForTestDate()
+    }
+    
+    @IBAction func didTapNextDay(_ sender: Any) {
+        let currentTestDate = testDate ?? Date()
+        testDate = Calendar.current.date(byAdding: .day, value: 1, to: currentTestDate)
+        updateForTestDate()
+    }
+    
+    @IBAction func didTapResetToToday(_ sender: Any) {
+        testDate = nil
+        updateForTestDate()
+    }
+    
     // MARK: - Initializers
     fileprivate func initializeProgressBars(_ components: DateComponents) {
 
@@ -92,8 +116,22 @@ class ViewController: UIViewController {
         lblTime.adjustsFontSizeToFitWidth = true
         if let nanoSeconds = nanoSeconds {
             DispatchQueue.main.asyncAfter(deadline: .now() + (1 - (Double(nanoSeconds)/1000000000.0))) {
-                self.timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(ViewController.updateTimeLabel), userInfo: nil, repeats: true)
+                // Aðal timer fyrir tíma label - hægri uppfærsla
+                self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.updateTimeLabel), userInfo: nil, repeats: true)
+                
+                // Mínútu progress bar - hraðasta uppfærsla
+                self.minuteTimer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(ViewController.updateMinuteProgressBar), userInfo: nil, repeats: true)
+                
+                // Klukkustund progress bar - miðlungs uppfærsla
+                self.hourTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.updateHourProgressBar), userInfo: nil, repeats: true)
+                
+                // Dagur, mánuður og ár progress bars - hægasta uppfærsla
+                self.dayTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(ViewController.updateDayProgressBars), userInfo: nil, repeats: true)
+                
                 self.updateTimeLabel()
+                self.updateMinuteProgressBar()
+                self.updateHourProgressBar()
+                self.updateDayProgressBars()
             }
         }
     }
@@ -152,7 +190,7 @@ class ViewController: UIViewController {
     }
     
     @objc func updateTimeLabel() {
-        let date = Date()
+        let date = testDate ?? Date()
                 
         let formattedTime = timeFormatter.string(from: date)
         let formattedDate = dateFormatter.string(from: date)
@@ -169,7 +207,21 @@ class ViewController: UIViewController {
             newDay()
         }
         lastDay = date
-        progressCollectionController?.updateProgressBars(date: Date())
+    }
+    
+    @objc func updateMinuteProgressBar() {
+        let date = testDate ?? Date()
+        progressCollectionController?.updateMinuteProgressBar(date: date)
+    }
+    
+    @objc func updateHourProgressBar() {
+        let date = testDate ?? Date()
+        progressCollectionController?.updateHourProgressBar(date: date)
+    }
+    
+    @objc func updateDayProgressBars() {
+        let date = testDate ?? Date()
+        progressCollectionController?.updateDayProgressBars(date: date)
     }
     
     @objc func updateBackgroundImage() {
@@ -236,7 +288,7 @@ class ViewController: UIViewController {
         //barMonth.progressItems = getSeparation(start: 1, end: getNumberOfDaysIn(year: components.year!, month: components.month!))
         let sundayIsHoliday = UserDefaults.standard.bool(forKey: "SundayIsHoliday")
 
-        let date = Date()
+        let date = testDate ?? Date()
 
         let weekday = Calendar.current.component(.weekday, from: date)
         if let day = getDayName(date: date) {
@@ -281,15 +333,67 @@ class ViewController: UIViewController {
         newDay()
     }
     
+    func updateForTestDate() {
+        // Uppfæra alla skjái fyrir prófunardagsetningu
+        let currentDate = testDate ?? Date()
+        
+        // Uppfæra tíma og dagsetningar (þetta kallar líka á newDay() ef dagurinn breyttist)
+        updateTimeLabel()
+    }
+
     func getDayName(date: Date) -> NSDictionary? {
-        let dictionary = NSArray(contentsOfFile: Bundle.main.path(forResource: "Almanak_separated_complete", ofType: "plist")!);
+        guard let dictionary = NSDictionary(contentsOfFile: Bundle.main.path(forResource: "Almanak_separated_by_type", ofType: "plist")!) else {
+            return nil
+        }
+        
+        // Fá báða array-a úr nýju skipulaginu
+        guard let fastirDagar = dictionary["fastir_dagar"] as? NSArray,
+              let breytilegirDagar = dictionary["breytilegir_dagar"] as? NSArray else {
+            return nil
+        }
         
         // Finna allar færslur fyrir sama dag
         var allEntries: [NSDictionary] = []
         var combinedName = ""
         var isHoliday = false
         
-        for day in dictionary! {
+        // Leita í föstum dögum - bera saman aðeins dag og mánuð, ekki ár
+        let currentDay = Calendar.current.component(.day, from: date)
+        let currentMonth = Calendar.current.component(.month, from: date)
+        
+        for day in fastirDagar {
+            guard let day = day as? NSDictionary else {
+                continue
+            }
+            
+            guard let dayDate = day["date"] as? Date else {
+                continue
+            }
+            
+            let entryDay = Calendar.current.component(.day, from: dayDate)
+            let entryMonth = Calendar.current.component(.month, from: dayDate)
+            
+            // Bera saman aðeins dag og mánuð fyrir fasta daga
+            if entryDay == currentDay && entryMonth == currentMonth {
+                allEntries.append(day)
+                
+                // Sameina nöfn
+                if let dayName = day["name"] as? String {
+                    if !combinedName.isEmpty {
+                        combinedName += "\n"
+                    }
+                    combinedName += dayName
+                }
+                
+                // Ef einhver færsla er frídagur, þá er dagurinn frídagur
+                if let holiday = day["holiday"] as? Bool, holiday {
+                    isHoliday = true
+                }
+            }
+        }
+        
+        // Leita í breytilegum dögum
+        for day in breytilegirDagar {
             guard let day = day as? NSDictionary else {
                 continue
             }
@@ -349,6 +453,15 @@ class ViewController: UIViewController {
         combinedEntry["date"] = date
         
         return combinedEntry
+    }
+    
+    deinit {
+        timer?.invalidate()
+        minuteTimer?.invalidate()
+        hourTimer?.invalidate()
+        dayTimer?.invalidate()
+        tempTimer?.invalidate()
+        faerdTimer?.invalidate()
     }
     
     // MARK: - Navigation
