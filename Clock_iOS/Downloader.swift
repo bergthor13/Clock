@@ -10,7 +10,11 @@ import Foundation
 
 class Downloader {
     static func downloadImage(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+        // Búa til sérstaka URLSession með delegation til að meðhöndla SSL vandamál
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config, delegate: InsecureSessionDelegate(), delegateQueue: nil)
+        
+        session.dataTask(with: url, completionHandler: completion).resume()
     }
     
 }
