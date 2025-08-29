@@ -28,6 +28,10 @@ class FaerdCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Setja svartan bakgrunn
+        self.collectionView.backgroundColor = UIColor.black
+        
         for _ in imageURLs {
             images.append(UIImage())
         }

@@ -16,6 +16,7 @@ class FaerdViewController: UIViewController {
         var scroll = UIScrollView(frame: self.view.frame)
         scroll.isPagingEnabled = true
         scroll.isScrollEnabled = true
+        scroll.backgroundColor = UIColor.black
         return scroll
     }()
     
@@ -30,6 +31,7 @@ class FaerdViewController: UIViewController {
         self.færðCVC = FaerdCollectionViewController(collectionViewLayout:UICollectionViewFlowLayout())
         self.færðCVC.collectionView.frame = collRect
         self.færðCVC.collectionView.isPagingEnabled = true
+        self.færðCVC.collectionView.backgroundColor = UIColor.black
 
         self.scrollView.contentSize = collRect.size
     }
@@ -57,6 +59,10 @@ class FaerdViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Tryggja að bakgrunnur sé alltaf svartur
+        self.view.backgroundColor = UIColor.black
+        
         self.timer = Timer.scheduledTimer(timeInterval: 60*5, target: self, selector: #selector(FaerdViewController.didTimeOut(_:)), userInfo: nil, repeats: false)
 
         self.initializeViews()

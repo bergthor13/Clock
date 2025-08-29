@@ -79,11 +79,13 @@ class ViewController: UIViewController {
     // MARK: - IBActions
     @IBAction func didTapFærð(_ sender: Any) {
         let faerdVC = FaerdViewController(image: færðImage)
+        faerdVC.modalPresentationStyle = .fullScreen
         present(faerdVC, animated: true, completion: nil)
     }
     
     @IBAction func didTapTemp(_ sender: Any) {
         let tempVC = TempTrendViewController()
+        tempVC.modalPresentationStyle = .fullScreen
         present(tempVC, animated: true, completion: nil)
         
     }
