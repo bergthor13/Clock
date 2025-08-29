@@ -183,6 +183,19 @@ class ProgressBarCollectionViewController: UICollectionViewController, UICollect
         getProgressBar(id: BAR_ID().YEAR).progress = (dayOfYear - 1) / daysInYear
     }
     
+    func updateMonthProgressBar(year: Int, month: Int) {
+        let monthBar = getProgressBar(id: BAR_ID().MONTH)
+        let daysInMonth = getNumberOfDaysIn(year: year, month: month)
+        
+        // Uppfæra progressItems með nýjum dagafjölda
+        monthBar.progressItems = getSeparation(start: 1, end: daysInMonth)
+        
+        // Þvinga að teikna merkingarnar aftur
+        DispatchQueue.main.async {
+            monthBar.drawSeparators()
+        }
+    }
+    
     func getProgressBar(id: Int) -> BTHProgressBar {
         return bars[id]
     }
@@ -232,7 +245,12 @@ class ProgressBarCollectionViewController: UICollectionViewController, UICollect
 
         heightConstraint.constant = collectionView.contentSize.height
         bars[indexPath.row] = cell.progressView
-        //bars[indexPath.row].drawSeparators()
+        
+        // Tryggja að merkingarnar séu teiknaðar strax þegar cella er búin til
+        DispatchQueue.main.async {
+            cell.progressView.drawSeparators()
+        }
+        
         return cell
     }
     

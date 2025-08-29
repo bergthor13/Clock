@@ -43,6 +43,7 @@ class ViewController: UIViewController {
 
     // MARK: - Other
     var lastDay = Date()
+    var lastMonth = Date()
     var færðImage:UIImage = UIImage()
     var backgroundImages = [UIImage]()
     var backgroundImageId = 0
@@ -159,6 +160,9 @@ class ViewController: UIViewController {
         updateTimeLabel()
         blurBackground()
         
+        // Setja upphafsgildi fyrir lastMonth
+        lastMonth = Date()
+        
         self.timer = Timer.scheduledTimer(timeInterval:backgroundUpdateTime, target: self, selector: #selector(ViewController.updateBackgroundImage), userInfo: nil, repeats: true)
         
         backgroundImages.append(UIImage(named: "gos")!)
@@ -206,7 +210,14 @@ class ViewController: UIViewController {
         if !Calendar.current.isDate(lastDay, inSameDayAs: date) {
             newDay()
         }
+        
+        // Athuga hvort mánuður hafi breyst
+        if !Calendar.current.isDate(lastMonth, equalTo: date, toGranularity: .month) {
+            newMonth()
+        }
+        
         lastDay = date
+        lastMonth = date
     }
     
     @objc func updateMinuteProgressBar() {
@@ -333,12 +344,33 @@ class ViewController: UIViewController {
         newDay()
     }
     
+    /*
+     * Keyrir í hvert skipti sem mánuður breytist.
+     */
+    func newMonth() {
+        let date = testDate ?? Date()
+        let components = Calendar.current.dateComponents([.year, .month], from: date)
+        
+        // Uppfæra mánaður progress bar með nýjum dagafjölda
+        progressCollectionController?.updateMonthProgressBar(year: components.year!, month: components.month!)
+        
+        print("DEBUG: Mánuður breyttist - uppfærði progress bar fyrir \(components.year!)/\(components.month!)")
+    }
+    
     func updateForTestDate() {
         // Uppfæra alla skjái fyrir prófunardagsetningu
         let currentDate = testDate ?? Date()
         
         // Uppfæra tíma og dagsetningar (þetta kallar líka á newDay() ef dagurinn breyttist)
         updateTimeLabel()
+        
+        // Ef við erum að nota test dagsetningu, athuga hvort mánuður hafi breyst
+        if testDate != nil {
+            if !Calendar.current.isDate(lastMonth, equalTo: currentDate, toGranularity: .month) {
+                newMonth()
+                lastMonth = currentDate
+            }
+        }
     }
 
     func getDayName(date: Date) -> NSDictionary? {
